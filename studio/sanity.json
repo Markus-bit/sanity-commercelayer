@@ -1,0 +1,32 @@
+{
+  "root": true,
+  "project": {
+    "name": "Commerce Layer Starter",
+    "basePath": "/"
+  },
+  "api": {
+    "projectId": "d9on6ro5",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "barcode-input"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+# Commerce Layer Starter
+
+A multi-country ecommerce starter that features the sanity studio built with Commerce Layer, Next.js, and deployed to Netlify.
+
+![](https://raw.githubusercontent.com/commercelayer/sanity-template-commercelayer/main/.sanity-template/assets/preview.jpg 'A preview image showing the frontend demo with some products.')
+
+![](https://raw.githubusercontent.com/commercelayer/sanity-template-commercelayer/main/.sanity-template/assets/studio.png 'A screenshot of Commerce Layer Sanity studio')
+
+## What is Commerce Layer?
+
+[Commerce Layer](https://commercelayer.io) is a multi-market commerce API and order management system that lets you add global shopping capabilities to any website, mobile app, chatbot, wearable, voice, or IoT device, with ease. Compose your stack with the best-of-breed tools you already mastered and love. Make any experience shoppable, anywhere, through a blazing-fast, enterprise-grade, and secure API.
+
+## Table of contents
+
+- [Starter features](#starter-features)
+- [Getting started](#getting-started)
+  - [⚙️ Installation guide](#%EF%B8%8F-installation-guide)
+  - [⬇️ Import test studio content](#%EF%B8%8F-import-test-studio-content)
+  - [⬇️ Seed Commerce Layer data](#%EF%B8%8F-seed-commerce-layer-data)
+- [Contributors guide](#contributors-guide)
+- [Need help?](#need-help)
+- [License](#license)
+
+## Starter features
+
+- An ecommerce storefront built with Nextjs, [Commerce Layer react components library](https://github.com/commercelayer/commercelayer-react-components), and Tailwind CSS.
+- International shopping capabilities powered by [Commerce Layer](https://commercelayer.io) APIs.
+- [Micro CLI seeder](https://github.com/commercelayer/commercelayer-seeder-cli) to import Commerce Layer data.
+- Structured content on Sanity CMS.
+- Localization support.
+- Deployment configuration to Netlify.
+
+## Getting started
+
+The quickest way to get up and running is to go to https://www.sanity.io/create?template=commercelayer/sanity-template-commercelayer and create a new project by following the instructions on Sanity.
+
+Alternatively, you can clone this repository, configure the starter, import the dataset into your Sanity studio, import some test data into your Commerce Layer organization, and deploy your application.
+
+![](https://raw.githubusercontent.com/commercelayer/sanity-template-commercelayer/main/.sanity-template/assets/sanity.png 'A screenshot of Commerce Layer Starter in sanity.io')
+
+### ⚙️ Installation guide
+
+1. Clone this repository ([learn how to do this](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)).
+
+2. Rename the `/env.example` file to `.env` and add the following:
+
+- Your project ID, dataset, and token from [manage.sanity.io](https://manage.sanity.io).
+- Your client ID and client endpoint from [Commerce Layer](https://dashboard.commercelayer.io/sign_up).
+
+3. Run the command below to install the necessary dependencies of your project:
+
+```bash
+npm install && cd /studio && sanity install
+```
+
+4. Add your `projectTitle`, `projectId,` and `dataset` in `/studio/sanity.json`.
+
+5. Run the command below to start the development server:
+
+```bash
+npm run dev
+```
+
+This will run the frontend at `localhost:3000` and studio at `localhost:3333`.
+
+### ⬇️ Import test studio content
+
+> If you set up your project from the starters page on Sanity, you should skip this step as Sanity will automatically add the dataset's content.
+
+1. Extract the `production.tar.gz` file in `/.sanity-template/data` directory using the command below:
+
+```bash
+tar -xf production.tar.gz
+```
+
+The extracted folder name should look like `production-export-2021-02-26t14-15-56-557z`.
+
+2. Run the command below in `/studio` to import the `data.ndjson` file in the extracted folder.
+
+```bash
+sanity dataset import ../.sanity-template/data/<name of extracted folder>/data.ndjson <your_dataset>
+```
+
+3. Check the frontend and studio now to preview the imported content.
+
+### ⬇️ Seed Commerce Layer data
+
+1. Create a free [Commerce Layer account](https://dashboard.commercelayer.io/sign_up).
+
+2. Create a new [organization](https://commercelayer.io/docs/data-model/users-and-organizations).
+
+3. Create a new application in the **Integrations** tab with **Name** set to `<Project Name>`, and **Role** set to `admin`.
+
+4. In your newly created application, copy your `Client ID`, `Client Secret`, and organization slug.
+
+5. Install the [Commerce Layer CLI](https://github.com/commercelayer/commercelayer-cli) which is available as an [npm package](https://www.npmjs.com/package/@commercelayer/commercelayer-cli) using the command below:
+
+```
+// npm
+npm install -g @commercelayer/cli
+
+//yarn
+yarn global add @commercelayer/cli
+```
+
+6. Log into your application via the CLI using the previously created CLI credentials like so:
+
+```
+commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
+```
+
+7. Install the seeder plugin using the command below:
+
+```
+commercelayer plugins:install seeder
+```
+
+8. Run the command below to import a [set of products](https://data.commercelayer.app/seed/skus.json), related [prices](https://data.commercelayer.app/seed/prices.json), and [inventory](https://data.commercelayer.app/seed/stock_items.json) into your organization.
+
+```bash
+commercelayer seed
+```
+
+9. To see the commands for other seeder options, type the command below:
+
+```bash
+commercelayer --help
+```
+
+## Contributors guide
+
+1. Fork [this repository](https://github.com/commercelayer/sanity-template-commercelayer) (learn how to do this [here](https://help.github.com/articles/fork-a-repo)).
+
+2. Clone the forked repository like so:
+
+```bash
+git clone https://github.com/<your username>/sanity-template-commercelayer.git && cd sanity-template-commercelayer
+```
+
+3. Make your changes and create a pull request ([learn how to do this](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)).
+
+4. Someone will attend to your pull request and provide some feedback.
+
+## Need help?
+
+1. Join [Commerce Layer's Slack community](https://slack.commercelayer.app).
+
+2. Create an [issue](https://github.com/commercelayer/sanity-template-commercelayer/issues) in this repository.
+
+3. Ping us [on Twitter](https://twitter.com/commercelayer).
+
+## License
+
+This repository is published under the [MIT](LICENSE) license.
+
+---
+
+Want to learn more about how we built this starter and how you can build yours? Sign up for our [newsletter](https://commercelayer.io/blog) to get notified once we publish the article.
